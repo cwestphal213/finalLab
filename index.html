@@ -1,6 +1,14 @@
+
 <html>
 <header>
+<title>
+  Final Lab
+</title>
 </header>
+<h1>R Graph</h1>
+</br>
+<h2>Finding Cheaters With R</h2>
+<p>Measuring the correlation coefficient between two penguins to determine if they are cheating may not be the best solution to finding whether they are cheating off one another.  Correlation strictly measures the amount two variables are associated; it does not indicate whether the test grades where are improving or decreasing by the same magnitude.  One student’s test grade may have improved by 1 from test to test and another’s may have improved by 5 from test to test.  These two students would have a high correlation to one another, even though the amount they are being graded by would not be the same.  It also fails to account for partial cheating that may occur between two students like sharing answers during the test but not copying the whole thing.</p>
   <style>
     body{
       background-color: #dfe6ea;
@@ -8,15 +16,15 @@
     #day{
       margin-left: 20px;
     }
-    rect:hover {
+    .o:hover {
 			fill: orange;
 		}
 		#tooltip {
 			position: absolute;
-			width: 170px;
+			width: 100px;
 			height: 40px;
 			padding: 10px;
-			background-color: white;
+			background-color: red;
 			-webkit-border-radius: 10px;
 			-moz-border-radius: 10px;
 			border-radius: 10px;
@@ -34,12 +42,13 @@
 				font-size: 16px;
 				line-height: 20px;
 			}
-      #displayDay{
-        font-size: 20px;
+
       }
     </style>
 <body>
 <svg>
+</svg>
+<svg class="key">
 </svg>
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script src='data.js'></script>
