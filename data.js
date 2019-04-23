@@ -7,6 +7,7 @@ dataP.then(function(data){
 
 var allPenR = make2DArray(data)
 
+
 var width = 500
 var height = 500
 
@@ -34,6 +35,7 @@ var svg = d3.select('svg')
                                 .data(allPenR[i])
                                 .enter()
                                 .append('rect')
+                                .attr("class","o")
                                 .attr('id',function(){return 'a'+i})
                                 .attr('x',function(da,ia){return xScale(ia)})
                                 .attr('y', function(db,ib){return yScale(i)})
@@ -46,15 +48,12 @@ var svg = d3.select('svg')
                                                 var xPosition = parseFloat(d3.select(this).attr("x"));
                                                 var yPosition = parseFloat(d3.select(this).attr("y"));
                                                 //Update the tooltip position and value
-                                                d3.select("#tooltip")
-                                                            .style("left", xPosition + "px")
-                                                            .style("top", yPosition + "px")
-                                                            
-    .text("okay")
+console.log(xPosition)
+console.log(yPosition)
   d3.select("#tooltip")
+    .text("ok")
     .style("left", xPosition + "px")
     .style("top", yPosition + "px")
-    .text("Hello")
                                                 //Show the tooltip
                                                 d3.select("#tooltip").classed("hidden", false);
                            })
@@ -62,11 +61,46 @@ var svg = d3.select('svg')
                                                 //Hide the tooltip
                                                 d3.select("#tooltip").classed("hidden", true);
 })
+  })
+
+var colors = [0,.2,.4,.6,.8,1]
+
+var svg2 = d3.select('.key')
+            .attr('width', width)
+            .attr('height', height);
+            var plot2 = svg2.append('g')
+                            .attr('width',width)
+                            .attr('height',height);
+var Legend = plot2.selectAll('rect')
+            .data(colors)
+            .enter()
+            .append('rect')
+            .attr('x', function(d,i){return xScale(i*3)+20})
+            .attr('y',function(d,i){return yScale(20)})
+            .attr('fill',function(d,i){return d3.interpolateBlues((d))})
+            .attr('height',20)
+            .attr('width',20);
+            colors.forEach(function(db,ib){
+              plot2.append('text')
+                  .attr('x', function(){return xScale(ib*3)+28})
+                  .attr('y',function(){return yScale(18)})
+                  .attr('text-anchor','middle')
+                  .attr('font-size','16px')
+                  .attr('fill','black')
+                  .attr('pointer-events','none')
+                  .text(function(){return db})
+            })
+plot2.append("text")
+.attr('x', 200)
+.attr('y', 40)
+.text("Legend")
+.attr('text-anchor','middle')
+.attr('font-size','30px')
+.attr('fill','black')
+.attr('pointer-events','none')
 
 
-                            })
-
-},
+                            },
 function(err){
   console.log(err)
 })
