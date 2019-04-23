@@ -49,12 +49,11 @@ var svg = d3.select('svg')
                                                 d3.select("#tooltip")
                                                             .style("left", xPosition + "px")
                                                             .style("top", yPosition + "px")
-                                                            .select("#value")
-    .text(d.length)
+                                                            
+    .text("okay")
   d3.select("#tooltip")
     .style("left", xPosition + "px")
     .style("top", yPosition + "px")
-    .select("#grade")
     .text("Hello")
                                                 //Show the tooltip
                                                 d3.select("#tooltip").classed("hidden", false);
