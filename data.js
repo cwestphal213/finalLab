@@ -40,6 +40,30 @@ var svg = d3.select('svg')
                                 .attr('height',function(){return height/23})
                                 .attr('width',function(){return width/allPenR[0].length})
                                 .attr('fill', function(dc,ic){return d3.interpolateBlues(dc)})
+                                .on("mouseover", function(d,i) {
+// console.log(d3.select(this).attr("x"))
+                                                //Get this bar's x/y values, then augment for the tooltip
+                                                var xPosition = parseFloat(d3.select(this).attr("x"));
+                                                var yPosition = parseFloat(d3.select(this).attr("y"));
+                                                //Update the tooltip position and value
+                                                d3.select("#tooltip")
+                                                            .style("left", xPosition + "px")
+                                                            .style("top", yPosition + "px")
+                                                            .select("#value")
+    .text(d.length)
+  d3.select("#tooltip")
+    .style("left", xPosition + "px")
+    .style("top", yPosition + "px")
+    .select("#grade")
+    .text("Hello")
+                                                //Show the tooltip
+                                                d3.select("#tooltip").classed("hidden", false);
+                           })
+    .on("mouseout", function() {
+                                                //Hide the tooltip
+                                                d3.select("#tooltip").classed("hidden", true);
+})
+
 
                             })
 
